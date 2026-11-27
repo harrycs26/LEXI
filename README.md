@@ -17,10 +17,10 @@
 Mỗi dòng một từ, cột cách nhau bằng `|`, Tab hoặc dấu phẩy (UTF-8):
 
 ```
-word|loại từ|phiên âm|nghĩa tiếng Việt|định nghĩa|ví dụ|chủ đề
-punctual|adj|/ˈpʌŋk.tʃu.əl/|đúng giờ|arriving at the expected time|She is always punctual.|Work & Economy
+word|loại từ|phiên âm|nghĩa tiếng Việt|định nghĩa|ví dụ|chủ đề|câu hỏi speaking|câu mẫu
+punctual|adj|/ˈpʌŋk.tʃu.əl/|đúng giờ|arriving at the expected time|She is always punctual.|Work & Economy|Are you a punctual person?|Yes, I try to arrive early because being late feels disrespectful.
 ```
-Chỉ cột `word` là bắt buộc. Dòng tiêu đề, dòng bắt đầu bằng `#` và từ trùng sẽ bị bỏ qua.
+Chỉ cột `word` là bắt buộc. Hai cột cuối (câu hỏi speaking, câu mẫu) là tùy chọn; nhiều câu thì ngăn cách bằng `##`. Dòng tiêu đề, dòng bắt đầu bằng `#` và từ trùng sẽ bị bỏ qua.
 
 ## Chạy trên máy
 Mở `index.html` bằng trình duyệt. Cần có mạng để tải font và mở các link từ điển / video.
