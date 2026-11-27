@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lexi – Học từ vựng tiếng Anh</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f9ff;--surf:#fff;--ink:#1d2b4a;--mut:#6b7a99;--line:#e1eaf7;--pri:#3b82f6;--pri2:#e6f0ff;--grn:#22c08a;--org:#ff9f43;--pnk:#ff6b8b;--vio:#8b7cf6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f172a;--surf:#18233d;--ink:#e8eefc;--mut:#93a3c4;--line:#27365a;--pri:#6aa3ff;--pri2:#1c2f57;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f172a;--surf:#18233d;--ink:#e8eefc;--mut:#93a3c4;--line:#27365a;--pri:#6aa3ff;--pri2:#1c2f57;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 Nunito,system-ui,sans-serif;background-image:radial-gradient(circle at 90% -10%,#cfe3ff55,transparent 40%),radial-gradient(circle at -10% 30%,#ffe3ec44,transparent 35%)}
+header{display:flex;align-items:center;gap:12px;padding:14px 20px;flex-wrap:wrap;max-width:1000px;margin:auto}
+.logo{font-weight:800;font-size:24px;color:var(--pri)}.logo span{color:var(--org)}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+nav button{border:0;background:transparent;color:var(--mut);font:600 15px Nunito;padding:8px 14px;border-radius:99px;cursor:pointer}
+nav button.on{background:var(--pri);color:#fff}
+main{max-width:1000px;margin:auto;padding:8px 20px 60px}
+h2{font-size:26px;margin:8px 0 14px}h3{margin:0 0 8px}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 6px 20px #3b82f614}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.stat{border-radius:18px;padding:16px;color:#fff}.stat b{font-size:34px;display:block;line-height:1.1}
+.btn{border:0;border-radius:12px;padding:10px 16px;font:700 15px Nunito;cursor:pointer;background:var(--pri);color:#fff}
+.btn.alt{background:var(--pri2);color:var(--pri)}.btn:focus-visible,nav button:focus-visible,.opt:focus-visible{outline:3px solid var(--org);outline-offset:2px}
+.mut{color:var(--mut)}.tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:99px;background:var(--pri2);color:var(--pri);margin-right:4px}
+.bar{height:10px;background:var(--line);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--pri),var(--vio))}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.fc{perspective:1000px;max-width:560px;margin:14px auto;cursor:pointer}
+.fc .in{min-height:260px;border-radius:24px;padding:26px;text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;background:linear-gradient(135deg,#e6f0ff,#f3ecff);border:1px solid var(--line);color:#1d2b4a}
+.fc.back .in{background:linear-gradient(135deg,#fff6e6,#ffeaf0);text-align:left;align-items:flex-start}
+.fc .w{font-size:40px;font-weight:800}
+.rate{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:560px;margin:auto}
+.rate button{padding:12px 4px;border:0;border-radius:12px;color:#fff;font:700 14px Nunito;cursor:pointer}
+.vid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;width:100%;margin-top:8px}
+.vid a{display:block;text-decoration:none;color:#1d2b4a;background:#fff;border-radius:12px;padding:10px;font-size:13px;border:1px solid #e1eaf7}
+.vid a b{display:block;font-size:14px}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:12px 16px;border-radius:12px;border:2px solid var(--line);background:var(--surf);color:var(--ink);font:600 16px Nunito;cursor:pointer}
+.opt.ok{border-color:var(--grn);background:#22c08a22}.opt.no{border-color:var(--pnk);background:#ff6b8b22}
+input,textarea{width:100%;padding:10px 12px;border-radius:10px;border:2px solid var(--line);background:var(--surf);color:var(--ink);font:16px Nunito}
+.tl{position:relative;padding-left:22px;border-left:3px solid var(--line);margin-left:8px}
+.tl div{position:relative;padding:0 0 14px}.tl div:before{content:"";position:absolute;left:-30px;top:5px;width:13px;height:13px;border-radius:50%;background:var(--pri);border:3px solid var(--bg)}
+.cal{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px}
+.day{border:2px solid var(--line);border-radius:14px;padding:10px;background:var(--surf);cursor:pointer;text-align:left;color:var(--ink);font:inherit}
+.day.sel{border-color:var(--pri)}.day b{font-size:22px;display:block}
+.day.today{background:var(--pri2)}
+.wl{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.wrap{overflow-x:auto}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Lexi<span>.</span></div>
+  <nav id="nav"></nav>
+</header>
+<main id="app"></main>
+<script>
+const W=[
+{w:"resilient",p:"adj",ipa:"/rɪˈzɪl.i.ənt/",vi:"kiên cường, mau phục hồi",d:"able to recover quickly after difficulties",e:"Children are often more resilient than adults expect.",t:"Tính cách"},
+{w:"ubiquitous",p:"adj",ipa:"/juːˈbɪk.wɪ.təs/",vi:"có mặt khắp nơi",d:"seeming to be everywhere at the same time",e:"Smartphones have become ubiquitous in modern life.",t:"Học thuật"},
+{w:"mitigate",p:"verb",ipa:"/ˈmɪt.ɪ.ɡeɪt/",vi:"giảm nhẹ, làm dịu bớt",d:"to make something less harmful or serious",e:"Trees help mitigate the effects of air pollution.",t:"Học thuật"},
+{w:"ambiguous",p:"adj",ipa:"/æmˈbɪɡ.ju.əs/",vi:"mơ hồ, nhập nhằng",d:"having more than one possible meaning",e:"The contract was ambiguous, so both sides argued.",t:"Học thuật"},
+{w:"pragmatic",p:"adj",ipa:"/præɡˈmæt.ɪk/",vi:"thực tế, thực dụng",d:"dealing with problems in a practical, sensible way",e:"She took a pragmatic approach to the budget.",t:"Tính cách"},
+{w:"thrive",p:"verb",ipa:"/θraɪv/",vi:"phát triển mạnh, thịnh vượng",d:"to grow or develop well and be successful",e:"Small businesses thrive when the community supports them.",t:"Công việc"},
+{w:"meticulous",p:"adj",ipa:"/məˈtɪk.jə.ləs/",vi:"tỉ mỉ, cẩn thận",d:"very careful and giving great attention to detail",e:"He is meticulous about keeping his records in order.",t:"Tính cách"},
+{w:"inevitable",p:"adj",ipa:"/ɪˈnev.ɪ.tə.bəl/",vi:"không thể tránh khỏi",d:"certain to happen and impossible to avoid",e:"With so much traffic, delays were inevitable.",t:"Học thuật"},
+{w:"reluctant",p:"adj",ipa:"/rɪˈlʌk.tənt/",vi:"miễn cưỡng, ngần ngại",d:"not willing to do something, and therefore slow to do it",e:"He was reluctant to admit that he was wrong.",t:"Tính cách"},
+{w:"in the long run",p:"phrase",ipa:"/ɪn ðə lɒŋ rʌn/",vi:"về lâu dài",d:"over a long period of time, or eventually",e:"Saving a little each month pays off in the long run.",t:"Cụm từ"},
+{w:"take for granted",p:"phrase",ipa:"/teɪk fə ˈɡrɑːn.tɪd/",vi:"coi là điều hiển nhiên",d:"to value someone or something too little because they are always there",e:"We often take clean water for granted.",t:"Cụm từ"},
+{w:"come up with",p:"phrasal verb",ipa:"/kʌm ʌp wɪð/",vi:"nghĩ ra, đề xuất",d:"to think of an idea, plan or answer",e:"The team came up with a clever solution overnight.",t:"Cụm từ"},
+{w:"apple",p:"noun",ipa:"/ˈæp.əl/",vi:"quả táo",d:"a round fruit with red, green or yellow skin and firm white flesh",e:"She packed an apple and a sandwich for lunch.",t:"Đồ ăn"}
+];
+const IT=["People & Relationships","Daily Life & Routines","Hobbies & Entertainment","Hometown & Housing","Travel & Transportation","Food & Dining","Shopping & Fashion","Health & Fitness","Weather & Seasons","Emotions & Memories","Education & Study","Work & Economy","Society & Urbanization","Crime & Law","Culture & Arts","Media & Communication","Science & Technology","Environment & Energy"];
+const IC=["👥","⏰","🎮","🏠","✈️","🍜","🛍️","💪","⛅","💭","🎓","💼","🏙️","⚖️","🎨","📱","🔬","🌱"];
+`People & Relationships|get along with|phrasal verb|hòa hợp với|to have a friendly relationship with someone|I get along with my neighbours really well.
+People & Relationships|close-knit|adj|gắn bó mật thiết|having strong, friendly relationships within a group|We grew up in a close-knit family.
+Daily Life & Routines|hectic|adj|bận rộn, hối hả|full of activity and very busy|Mornings at my house are always hectic.
+Daily Life & Routines|wind down|phrasal verb|thư giãn sau ngày dài|to relax after a period of stress or activity|I usually wind down by reading before bed.
+Hobbies & Entertainment|pastime|noun|thú tiêu khiển|something you do for fun in your free time|Photography is my favourite pastime.
+Hobbies & Entertainment|binge-watch|verb|cày phim liên tục|to watch many episodes of a show in one go|I binge-watched a whole series last weekend.
+Hometown & Housing|bustling|adj|nhộn nhịp|full of noise, people and activity|My hometown has a bustling night market.
+Hometown & Housing|cosy|adj|ấm cúng|comfortable, warm and pleasant|I rented a cosy flat near the river.
+Travel & Transportation|commute|verb|đi làm/đi học hằng ngày|to travel regularly between home and work or school|I commute by motorbike every day.
+Travel & Transportation|off the beaten track|phrase|nơi ít khách du lịch biết đến|in a place that few tourists visit|We found a village off the beaten track.
+Food & Dining|mouth-watering|adj|ngon thèm thuồng|looking or smelling extremely good to eat|The street food stalls smelled mouth-watering.
+Food & Dining|home-cooked|adj|nấu ở nhà|prepared at home rather than bought outside|Nothing beats a home-cooked meal.
+Shopping & Fashion|bargain|noun|món hời|something bought for less than its usual price|I found a real bargain at the sale.
+Shopping & Fashion|trendy|adj|hợp mốt|fashionable at the present time|She wears trendy clothes from local designers.
+Health & Fitness|work out|phrasal verb|tập thể dục|to exercise in order to improve fitness|I work out three times a week.
+Health & Fitness|well-balanced|adj|cân bằng, đủ chất|containing a healthy mix of different things|A well-balanced diet keeps me energetic.
+Weather & Seasons|humid|adj|ẩm ướt, oi bức|containing a lot of water vapour in the air|Summers here are hot and humid.
+Weather & Seasons|drizzle|noun|mưa phùn|light rain falling in very small drops|A light drizzle made the evening cool.
+Emotions & Memories|nostalgic|adj|hoài niệm|feeling happy and a little sad when thinking about the past|Old photos make me feel nostalgic.
+Emotions & Memories|unforgettable|adj|khó quên|so special that you will always remember it|The trip was an unforgettable experience.
+Education & Study|cram|verb|học nhồi nhét|to study a lot in a short time before an exam|I had to cram the night before the test.
+Education & Study|hands-on|adj|thực hành|involving practical experience rather than theory|I prefer hands-on learning to lectures.
+Work & Economy|work-life balance|noun|cân bằng công việc và cuộc sống|a healthy division of time between work and personal life|Good work-life balance matters more than salary.
+Work & Economy|cost of living|noun|chi phí sinh hoạt|the amount of money needed to pay for basic needs|The cost of living is rising in big cities.
+Society & Urbanization|overcrowded|adj|quá đông đúc|containing too many people|Buses are overcrowded at rush hour.
+Society & Urbanization|urbanisation|noun|đô thị hóa|the growth of towns and cities as people move to them|Rapid urbanisation has changed my hometown.
+Crime & Law|law-abiding|adj|tuân thủ pháp luật|always obeying the law|Most people in my area are law-abiding.
+Crime & Law|deter|verb|ngăn chặn, răn đe|to make someone decide not to do something|Cameras can deter thieves.
+Culture & Arts|heritage|noun|di sản|traditions and buildings passed down from the past|Hoi An is a world heritage site.
+Culture & Arts|exhibition|noun|triển lãm|a public show of art or other interesting items|I visited a photo exhibition last month.
+Media & Communication|go viral|phrase|lan truyền nhanh|to spread very quickly across the internet|Her video went viral overnight.
+Media & Communication|keep in touch|phrase|giữ liên lạc|to stay in contact with someone|We keep in touch through messaging apps.
+Science & Technology|cutting-edge|adj|tiên tiến nhất|using the newest and most advanced methods|The hospital has cutting-edge equipment.
+Science & Technology|gadget|noun|thiết bị tiện ích nhỏ|a small, useful electronic device|I love trying out new gadgets.
+Environment & Energy|renewable|adj|có thể tái tạo|able to be replaced naturally, such as wind or solar power|Solar is a renewable source of energy.
+Environment & Energy|carbon footprint|noun|lượng khí thải carbon|the amount of carbon dioxide caused by your activities|I try to reduce my carbon footprint by cycling.`.split("\n").forEach(l=>{const a=l.split("|");W.push({t:a[0],w:a[1],p:a[2],ipa:"",vi:a[3],d:a[4],e:a[5]})});
+const TQ={"People & Relationships":[["Do you prefer spending time with friends or family?","Honestly, both, but I’d say friends. We share the same interests, so conversations are relaxed. That said, I make time for family on weekends."],["Who is the person you are closest to?","Probably my older sister. She has always listened without judging me, and we talk almost every day, even if it’s only a short message."]],
+"Daily Life & Routines":[["What does your typical day look like?","I usually get up around six, have a quick breakfast and head to work. In the evening I cook, relax a little and go to bed before eleven."],["Are you a morning person or a night owl?","I’m definitely a morning person. My mind is sharpest before noon, so I do my most important tasks then."]],
+"Hobbies & Entertainment":[["What do you like to do in your free time?","I enjoy taking photos and watching films. Both help me switch off after a long week, and I often do them with friends."],["Have you tried a new hobby recently?","Yes, I started baking last month. It was frustrating at first, but now I can make decent bread, which feels rewarding."]],
+"Hometown & Housing":[["Can you describe your hometown?","I come from a busy southern city. It has crowded streets, lots of street food and friendly people, though it can get noisy."],["Would you prefer to live in a house or an apartment?","An apartment, because it’s convenient and usually close to shops and public transport. A garden would be nice, but it’s not essential."]],
+"Travel & Transportation":[["How do you usually get around your city?","Mostly by motorbike because it’s fast and flexible. When it rains heavily, I take a taxi or use a ride-hailing app instead."],["Do you prefer travelling alone or with others?","With others. Sharing costs and memories makes a trip more fun, and it feels safer somewhere unfamiliar."]],
+"Food & Dining":[["What kind of food do you enjoy most?","I love noodle dishes, especially soups with fresh herbs. They’re comforting and affordable, and every region has its own version."],["Do you prefer eating out or cooking at home?","I usually cook at home because it’s healthier and cheaper, but I enjoy eating out with friends at weekends."]],
+"Shopping & Fashion":[["Do you enjoy shopping? Why or why not?","Sometimes. I like browsing for books and clothes, but crowded malls tire me out, so I often shop online instead."],["What kind of clothes do you usually wear?","Casual and comfortable ones, like jeans and a plain shirt. For work I add a jacket to look smarter."]],
+"Health & Fitness":[["What do you do to stay healthy?","I walk or cycle most days and try to sleep at least seven hours. I also limit sugary drinks, which makes a big difference."],["Do you think people exercise enough these days?","Not really. Many people sit at desks all day and feel too tired afterwards, so even a short daily walk would help."]],
+"Weather & Seasons":[["What’s the weather like in your hometown?","It’s hot all year round, with a rainy season from May to November. Afternoon showers are common and cool things down."],["Which season do you like best?","The cooler months, because it’s pleasant to be outdoors and I don’t get tired as easily."]],
+"Emotions & Memories":[["What’s one of your happiest childhood memories?","Visiting my grandparents’ village every summer. We played outside until dark, and my grandmother cooked wonderful meals."],["How do you usually feel when you’re stressed?","I get restless and can’t concentrate. Going for a walk or talking to a friend helps me calm down."]],
+"Education & Study":[["What subject did you enjoy most at school?","English, because my teacher made lessons lively. We played games and watched short videos, so learning never felt boring."],["Do you prefer studying alone or in a group?","Alone for memorising, but groups are great for discussing difficult ideas. I try to combine both."]],
+"Work & Economy":[["What do you do for work or study?","I’m a student at the moment, majoring in business. I hope to work in marketing after I graduate."],["What would your ideal job be like?","A flexible job with friendly colleagues and chances to learn. A high salary is nice, but I’d rather enjoy what I do."]],
+"Society & Urbanization":[["Do you like living in a big city?","Mostly yes. There are more jobs and services, but traffic and high prices can be stressful."],["What problems do big cities face?","Traffic jams, pollution and expensive housing are the main ones. Better public transport would ease many of them."]],
+"Crime & Law":[["Do you feel safe in your neighbourhood?","Yes, for the most part. People know each other and there are cameras on the main street, so I rarely worry at night."],["Why do some people break the law?","Often because of poverty or lack of opportunity, though some simply think they won’t get caught. Education and fair jobs can help."]],
+"Culture & Arts":[["Are traditional festivals important in your country?","Very. Festivals like Tet bring families together and keep customs alive, which gives young people a sense of identity."],["Do you often visit museums or galleries?","Not often, maybe twice a year. When I do, I enjoy learning about history in a visual way."]],
+"Media & Communication":[["How do you usually keep in touch with friends?","Mostly through messaging apps because they’re quick and free. For special occasions I prefer a video call."],["Do you read the news? Where from?","Yes, mainly on my phone through news apps. I also follow a few reliable pages on social media."]],
+"Science & Technology":[["What technology do you use most every day?","My smartphone, without a doubt. I use it for messaging, maps, banking and even learning languages."],["Do you think technology makes life easier?","Generally yes, because it saves time. However, it can also distract us, so I try to limit my screen time."]],
+"Environment & Energy":[["What do you do to protect the environment?","I carry a reusable bottle, separate my rubbish and avoid plastic bags. They’re small steps, but they add up."],["Is pollution a problem in your area?","Yes, especially air pollution from traffic. More electric vehicles and green spaces would improve things."]]};
+const SP={apple:[["Do you like apples? Why or why not?","Yes, I do. Apples are crunchy, sweet and easy to carry, so I often eat one as a snack between classes. They are also healthy, which makes me feel good about my choice."],["What is your favorite way to eat apples?","I like them sliced with a little peanut butter. In winter I sometimes bake an apple with cinnamon, and the smell makes the whole kitchen feel warm."],["Do you agree that an apple a day keeps the doctor away?","It is a popular saying, and apples do give you fiber and vitamins. However, I think a balanced diet and regular exercise matter much more than any single fruit."]]};
+const IV=[0,1,3,7,14,30],DAY=864e5;
+let S;try{S=JSON.parse(localStorage.getItem("lexi2"))}catch(e){}
+S=S||{cards:{},log:[],custom:[],best:0};
+const save=()=>{try{localStorage.setItem("lexi2",JSON.stringify(S))}catch(e){}};
+const all=()=>W.concat(S.custom);
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const sod=t=>{const d=new Date(t);d.setHours(0,0,0,0);return +d};
+const fmt=t=>new Date(t).toLocaleDateString("vi-VN",{day:"2-digit",month:"2-digit"});
+const isDue=w=>{const c=S.cards[w.w];return !c||c.due<=Date.now()};
+const dueList=()=>all().filter(isDue);
+const nextRev=w=>{const c=S.cards[w.w];if(!c)return "Chưa học · học ngay";if(c.due<=Date.now())return "Đến hạn ôn ngay";const n=Math.round((sod(c.due)-sod(Date.now()))/DAY);return "Ôn lại: "+fmt(c.due)+(n>0?" (còn "+n+" ngày)":" (hôm nay)")};
+const topics=()=>{const m={};all().forEach(x=>{const k=x.t||"Của tôi";(m[k]=m[k]||[]).push(x)});return Object.entries(m)};
+function openTopic(i){tab="words";ui={tp:topics()[i][0]};nav();R.words();scrollTo(0,0)}
+function spQ0(w){if(SP[w.w])return SP[w.w];const x=w.w,q=[["Can you explain what \""+x+"\" means in your own words?","Sure. \""+x+"\" means "+(w.d||w.vi)+". For example: "+(w.e||"…")]];
+q.push([w.p=="verb"?"Talk about a time when the idea of \""+x+"\" was important in your life or work.":w.p=="adj"?"Describe a person, place or situation that is \""+x+"\".":"Tell me about a situation where you could use \""+x+"\".","A good example comes to mind. "+(w.e||"")+" That is why I think this word fits well, and I use it when I want to be precise."]);
+q.push(["Can you make your own sentence with \""+x+"\" and explain why you chose it?","Of course. "+(w.e||"")+" I chose this sentence because it shows the meaning clearly in an everyday situation."]);return q}
+const speak=t=>{try{const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.85;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}};
+const cam=w=>"https://dictionary.cambridge.org/search/english/direct/?q="+encodeURIComponent(w);
+const oxf=w=>"https://www.oxfordlearnersdictionaries.com/search/english/?q="+encodeURIComponent(w);
+function vids(w){const q=encodeURIComponent(w),y="https://youglish.com/pronounce/"+q+"/english/";
+return [["Video 1 · Giọng Mỹ","Người bản xứ nói “"+w+"” trong video thật",y+"us"],["Video 2 · Giọng Anh","Ngữ cảnh phỏng vấn, tin tức, bài giảng",y+"uk"],["Video 3 · Giọng Úc","Nghe thêm sự khác biệt vùng miền",y+"aus"],["Video 4 · Phim & TV","Đoạn phim ngắn có câu chứa từ này","https://www.playphrase.me/#/search?q="+q],["Video 5 · YouTube","Bài học phát âm & cách dùng","https://www.youtube.com/results?search_query="+encodeURIComponent("how to pronounce and use "+w+" in context")]]
+.map(v=>`<a href="${v[2]}" target="_blank" rel="noopener"><b>▶ ${v[0]}</b>${v[1]}</a>`).join("")}
+function rate(w,r){const c=S.cards[w]||{box:0,n:0};
+if(r==0){c.box=0;c.due=Date.now()+10*60e3}
+else{c.box=Math.min(5,c.box+(r==1?0:r==2?1:2));c.due=sod(Date.now())+Math.max(1,IV[c.box])*DAY}
+c.n=(c.n||0)+1;S.cards[w]=c;S.log.unshift({t:Date.now(),w,r});S.log=S.log.slice(0,60);save()}
+const tabs=[["home","Tổng quan"],["coll","Bộ sưu tập"],["words","Từ vựng"],["cards","Flashcard"],["speak","Speaking"],["quiz","Bài tập"],["sched","Lịch ôn tập"]];
+let tab="home",ui={};
+function nav(){$("#nav").innerHTML=tabs.map(t=>`<button class="${t[0]==tab?"on":""}" onclick="go('${t[0]}')">${t[1]}</button>`).join("")}
+function go(t){tab=t;ui={};nav();R[t]();scrollTo(0,0)}
+const R={
+home(){const A=all(),d=dueList(),learned=A.filter(x=>S.cards[x.w]&&S.cards[x.w].box>=3).length,seen=Object.keys(S.cards).length;
+const today=S.log.filter(l=>sod(l.t)==sod(Date.now())).length;
+const days=[...Array(7)].map((_,i)=>{const t=sod(Date.now())-(6-i)*DAY;return S.log.filter(l=>sod(l.t)==t).length});const mx=Math.max(1,...days);
+$("#app").innerHTML=`<h2>Chào bạn, hôm nay học gì nào?</h2>
+<div class="grid">
+<div class="stat" style="background:linear-gradient(135deg,#3b82f6,#8b7cf6)"><b>${d.length}</b>từ cần học/ôn hôm nay</div>
+<div class="stat" style="background:linear-gradient(135deg,#22c08a,#4fd8c4)"><b>${learned}/${A.length}</b>từ đã thuộc (hộp 3+)</div>
+<div class="stat" style="background:linear-gradient(135deg,#ff9f43,#ff6b8b)"><b>${today}</b>lượt ôn trong hôm nay</div></div>
+<div class="grid" style="margin-top:14px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+<div class="card"><h3>Kế hoạch hôm nay</h3>
+<div class="tl"><div><b>1. Học từ mới</b><br><span class="mut">Xem danh sách, nghe phát âm, mở 5 video ngữ cảnh</span><br><button class="btn alt" onclick="go('words')">Mở từ vựng</button></div>
+<div><b>2. Flashcard theo lịch</b><br><span class="mut">${d.length} thẻ đang chờ</span><br><button class="btn" onclick="go('cards')">Bắt đầu</button></div>
+<div><b>3. Làm bài tập</b><br><span class="mut">Trắc nghiệm và điền từ để kiểm tra nhớ</span><br><button class="btn alt" onclick="go('quiz')">Làm bài</button></div>
+<div><b>4. Xem lịch ôn tập</b><br><span class="mut">Các mốc 1 · 3 · 7 · 14 · 30 ngày</span></div></div></div>
+<div class="card"><h3>7 ngày gần đây</h3><div class="row" style="align-items:flex-end;height:110px;gap:8px">${days.map((n,i)=>`<div style="flex:1;text-align:center"><div style="height:${Math.max(4,n/mx*80)}px;background:linear-gradient(var(--pri),var(--vio));border-radius:8px"></div><small class="mut">${n}</small></div>`).join("")}</div>
+<h3 style="margin-top:16px">Timeline học tập</h3>
+<div class="tl" style="max-height:200px;overflow:auto">${S.log.slice(0,8).map(l=>`<div><b>${esc(l.w)}</b> <span class="mut">${["quên","khó","ổn","dễ"][l.r]} · ${new Date(l.t).toLocaleString("vi-VN",{hour:"2-digit",minute:"2-digit",day:"2-digit",month:"2-digit"})}</span></div>`).join("")||'<span class="mut">Chưa có hoạt động. Hãy học thẻ đầu tiên!</span>'}</div></div></div>
+<p class="mut">Tra từ điển: <a href="https://dictionary.cambridge.org/" target="_blank" rel="noopener">Cambridge</a> · <a href="https://www.oxfordlearnersdictionaries.com/" target="_blank" rel="noopener">Oxford Learner’s</a></p>`},
+words(){const A=all(),f=ui.f||"";const L=A.filter(x=>(x.w+x.vi+x.t).toLowerCase().includes(f.toLowerCase())&&(!ui.tp||(x.t||"Của tôi")==ui.tp));
+$("#app").innerHTML=`<h2>Từ vựng & cụm từ</h2>${ui.tp?`<p>Chủ đề: <b>${esc(ui.tp)}</b> <button class="btn alt" style="padding:2px 10px" onclick="ui.tp=null;R.words()">Bỏ lọc</button></p>`:""}
+<div class="row" style="margin-bottom:12px"><input id="q" placeholder="Tìm từ, nghĩa hoặc chủ đề…" value="${esc(f)}" style="flex:1;min-width:200px" oninput="ui.f=this.value;R.words();q.focus();q.setSelectionRange(99,99)"><button class="btn" onclick="ui.add=!ui.add;R.words()">+ Thêm từng từ</button><button class="btn alt" onclick="ui.imp=!ui.imp;ui.msg='';R.words()">📄 Nhập từ từ file</button></div>${ui.msg?`<p class="tag" style="background:#22c08a22;color:var(--ink);padding:8px 14px">${esc(ui.msg)}</p>`:""}${ui.imp?impPanel():""}
+${ui.add?`<div class="card" style="margin-bottom:12px"><div class="grid"><input id="nw" placeholder="Từ hoặc cụm từ"><input id="nv" placeholder="Nghĩa tiếng Việt"><input id="nd" placeholder="Định nghĩa tiếng Anh"><input id="ne" placeholder="Câu ví dụ"><input id="nt" list="tl" placeholder="Chủ đề (chọn hoặc tự gõ)"><datalist id="tl">${topics().map(t=>`<option value="${esc(t[0])}">`).join("")}</datalist><select id="nr" style="padding:10px;border-radius:10px;border:2px solid var(--line);background:var(--surf);color:var(--ink);font:16px Nunito"><option value="0">Ôn lần đầu: hôm nay</option><option value="1">Ôn lần đầu: ngày mai</option><option value="3">Ôn lần đầu: 3 ngày nữa</option><option value="7">Ôn lần đầu: 7 ngày nữa</option></select></div><p class="mut">Bạn có thể dán định nghĩa từ Cambridge hoặc Oxford.</p><button class="btn" onclick="addW()">Lưu từ</button></div>`:""}
+<div class="wl">${L.map(x=>{const i=A.indexOf(x);return`<div class="card"><div class="row"><b style="font-size:20px">${esc(x.w)}</b><button class="btn alt" style="padding:4px 10px" onclick="speak('${esc(x.w).replace(/'/g,"\\'")}')">🔊</button></div>
+<span class="mut">${esc(x.ipa||"")}</span> <span class="tag">${esc(x.p||"")}</span><span class="tag">${esc(x.t||"Của tôi")}</span><br><span class="tag" style="background:#fff3e0;color:#b45f00;margin-top:4px">⏰ ${nextRev(x)}</span>
+<p style="margin:6px 0"><b>${esc(x.vi)}</b><br>${esc(x.d)}</p><p class="mut" style="margin:0 0 8px"><i>${esc(x.e)}</i></p>
+<div class="row"><a href="${cam(x.w)}" target="_blank" rel="noopener">Cambridge</a><a href="${oxf(x.w)}" target="_blank" rel="noopener">Oxford</a><button class="btn alt" style="padding:4px 10px" onclick="ui.v=ui.v==${i}?-1:${i};R.words()">5 video</button></div>
+${ui.v==i?`<div class="vid" style="color:#1d2b4a">${vids(x.w)}</div>`:""}</div>`}).join("")}</div>`},
+cards(){const Q=ui.q||(ui.q=dueList().slice(0,20));const w=Q[ui.i||0];
+if(!w){$("#app").innerHTML=`<h2>Flashcard</h2><div class="card" style="text-align:center"><h3>Hoàn thành!</h3><p class="mut">Không còn thẻ đến hạn. Xem lịch ôn tập để biết lần ôn kế tiếp.</p><button class="btn" onclick="go('sched')">Xem lịch</button></div>`;return}
+const bk=ui.b;$("#app").innerHTML=`<h2>Flashcard</h2><div class="bar"><i style="width:${(ui.i||0)/Q.length*100}%"></i></div><p class="mut">Thẻ ${(ui.i||0)+1}/${Q.length} · bấm vào thẻ hoặc phím Space để lật</p>
+<div class="fc ${bk?"back":""}" onclick="ui.b=!ui.b;R.cards()"><div class="in">${bk?`<div class="w" style="font-size:28px">${esc(w.w)}</div><div><b>${esc(w.vi)}</b></div><div>${esc(w.d)}</div><div style="opacity:.75"><i>${esc(w.e)}</i></div>
+<div class="vid" onclick="event.stopPropagation()">${vids(w.w)}</div><div class="row" onclick="event.stopPropagation()"><a href="${cam(w.w)}" target="_blank" rel="noopener">Cambridge</a><a href="${oxf(w.w)}" target="_blank" rel="noopener">Oxford</a></div>`
+:`<div class="w">${esc(w.w)}</div><div style="opacity:.7">${esc(w.ipa||"")}</div><button class="btn alt" onclick="event.stopPropagation();speak('${esc(w.w).replace(/'/g,"\\'")}')">🔊 Nghe</button>`}</div></div>
+${bk?`<div class="rate"><button style="background:#ff6b8b" onclick="rt(0)">Quên<br><small>10 phút</small></button><button style="background:#ff9f43" onclick="rt(1)">Khó<br><small>1 ngày</small></button><button style="background:#3b82f6" onclick="rt(2)">Ổn<br><small>hộp kế tiếp</small></button><button style="background:#22c08a" onclick="rt(3)">Dễ<br><small>nhảy 2 hộp</small></button></div>`:`<div style="text-align:center"><button class="btn" onclick="ui.b=true;R.cards()">Lật thẻ</button></div>`}`},
+quiz(){if(!ui.qs){const A=all(),sh=a=>a.slice().sort(()=>Math.random()-.5);
+ui.qs=sh(A).slice(0,10).map((x,k)=>{const o=sh([x,...sh(A.filter(y=>y!=x)).slice(0,3)]);const ty=k%3;
+return ty==2?{ty,x,a:x.w}:{ty,x,o,a:x.w}});ui.n=0;ui.s=0}
+const q=ui.qs[ui.n];
+if(!q){S.best=Math.max(S.best||0,ui.s);save();$("#app").innerHTML=`<h2>Bài tập</h2><div class="card" style="text-align:center"><h3>Điểm: ${ui.s}/${ui.qs.length}</h3><p class="mut">Điểm cao nhất: ${S.best}</p><button class="btn" onclick="ui={};R.quiz()">Làm bài mới</button></div>`;return}
+const P=q.ty==0?`Chọn từ có nghĩa: <b>${esc(q.x.vi)}</b><br><span class="mut">${esc(q.x.d)}</span>`:q.ty==1?`Điền từ vào chỗ trống:<br><i>${esc(q.x.e.replace(new RegExp(q.x.w.split(" ")[0],"i"),"_____"))}</i>`:`Gõ từ tiếng Anh có nghĩa: <b>${esc(q.x.vi)}</b><br><span class="mut">${esc(q.x.d)} · gợi ý: ${esc(q.x.w[0])}…${q.x.w.length} ký tự</span>`;
+$("#app").innerHTML=`<h2>Bài tập</h2><div class="bar"><i style="width:${ui.n/ui.qs.length*100}%"></i></div><div class="card" style="margin-top:12px"><p>Câu ${ui.n+1}/${ui.qs.length}</p><p style="font-size:18px">${P}</p>
+${q.o?q.o.map(o=>`<button class="opt" onclick="ans(this,'${esc(o.w).replace(/'/g,"\\'")}')">${esc(o.w)}</button>`).join(""):`<div class="row"><input id="ti" placeholder="Nhập đáp án" style="flex:1" onkeydown="if(event.key=='Enter')ans(null,ti.value)"><button class="btn" onclick="ans(null,ti.value)">Kiểm tra</button></div>`}
+<div id="fb"></div></div>`},
+sched(){const n=all(),t0=sod(Date.now());const map={};
+n.forEach(x=>{const c=S.cards[x.w];const d=c?Math.max(0,Math.round((sod(c.due)-t0)/DAY)):0;(map[d]=map[d]||[]).push(x)});
+const sel=ui.d==null?0:ui.d;
+$("#app").innerHTML=`<h2>Lịch ôn tập</h2><p class="mut">Hệ thống lặp lại ngắt quãng: mỗi lần nhớ đúng, từ sẽ chuyển sang mốc ôn xa hơn (1 → 3 → 7 → 14 → 30 ngày). Từ mới chưa học tính vào hôm nay.</p>
+<div class="cal">${[...Array(14)].map((_,i)=>{const dt=t0+i*DAY,c=(map[i]||[]).length;return`<button class="day ${i==sel?"sel":""} ${i==0?"today":""}" onclick="ui.d=${i};R.sched()"><span class="mut">${i==0?"Hôm nay":fmt(dt)}</span><b style="color:${c?"var(--pri)":"var(--mut)"}">${c}</b>từ</button>`}).join("")}</div>
+<div class="card" style="margin-top:14px"><h3>${sel==0?"Hôm nay":"Ngày "+fmt(t0+sel*DAY)}</h3>${(map[sel]||[]).map(x=>{const c=S.cards[x.w];return`<div class="row" style="padding:6px 0;border-bottom:1px solid var(--line)"><b>${esc(x.w)}</b><span class="mut">${esc(x.vi)}</span><span class="tag" style="margin-left:auto">${c?"Hộp "+c.box:"Từ mới"}</span></div>`}).join("")||'<span class="mut">Không có từ nào cần ôn ngày này.</span>'}</div>
+<div class="card" style="margin-top:14px"><h3>Hộp ghi nhớ</h3><div class="row">${[0,1,2,3,4,5].map(b=>`<div class="stat" style="flex:1;min-width:90px;background:var(--pri);padding:10px"><b>${n.filter(x=>S.cards[x.w]&&S.cards[x.w].box==b).length}</b>Hộp ${b}</div>`).join("")}</div></div>`}};
+R.coll=function(){const T=topics(),cl=["#3b82f6,#8b7cf6","#22c08a,#4fd8c4","#ff9f43,#ff6b8b","#8b7cf6,#ff6b8b","#06b6d4,#3b82f6"];
+$("#app").innerHTML=`<h2>Bộ sưu tập theo chủ đề</h2><p class="mut">Mỗi từ thuộc một chủ đề. Bấm vào bộ để xem từ và lịch ôn lại tiếp theo của từng từ. Khi thêm từ mới, bạn gõ tên chủ đề để tạo bộ mới.</p>
+<div class="grid">${T.map((t,i)=>{const n=t[1].length,ok=t[1].filter(x=>S.cards[x.w]&&S.cards[x.w].box>=3).length,du=t[1].filter(isDue).length;return`<div class="card" style="cursor:pointer" onclick="openTopic(${i})"><div class="stat" style="background:linear-gradient(135deg,${cl[i%5]});margin-bottom:10px"><b>${n}</b>từ · ${esc(t[0])}</div><div class="bar"><i style="width:${ok/n*100}%"></i></div><p class="mut" style="margin:8px 0 0">${ok}/${n} đã thuộc · ${du} đến hạn ôn</p><p class="mut" style="margin:4px 0 0;font-size:14px">${esc(t[1].slice(0,3).map(x=>x.w).join(", "))}…</p></div>`}).join("")}</div>`};
+R.speak=function(){const A=all();if(ui.sw==null){ui.sw=Math.max(0,A.findIndex(x=>x.w=="apple"));ui.o={}}const w=A[ui.sw],Q=spQ(w);ui.cur=Q;
+$("#app").innerHTML=`<h2>Luyện Speaking</h2><p class="mut">Chọn một từ, nói to câu trả lời của bạn (30–45 giây), rồi mở câu mẫu để so sánh và nghe lại.</p>
+<div class="row" style="margin-bottom:12px"><select style="padding:10px;border-radius:10px;border:2px solid var(--line);background:var(--surf);color:var(--ink);font:16px Nunito" onchange="ui.sw=+this.value;ui.o={};R.speak()">${A.map((x,i)=>`<option value="${i}" ${i==ui.sw?"selected":""}>${esc(x.w)} – ${esc(x.vi)}</option>`).join("")}</select><button class="btn alt" onclick="speak('${esc(w.w).replace(/'/g,"\\'")}')">🔊 ${esc(w.w)}</button></div>
+${Q.map((q,k)=>`<div class="card" style="margin-bottom:12px"><span class="tag">Câu hỏi ${k+1}</span><p style="font-size:18px;margin:8px 0"><b>${esc(q[0])}</b></p><div class="row"><button class="btn alt" onclick="speak(ui.cur[${k}][0])">🔊 Nghe câu hỏi</button><button class="btn" onclick="ui.o[${k}]=!ui.o[${k}];R.speak()">${ui.o[k]?"Ẩn câu mẫu":"Xem câu mẫu"}</button></div>${ui.o[k]?`<div style="margin-top:12px;padding:14px;border-radius:12px;background:var(--pri2)"><p style="margin:0 0 8px">${esc(q[1])}</p><button class="btn alt" style="background:var(--surf)" onclick="speak(ui.cur[${k}][1])">🔊 Nghe mẫu</button></div>`:""}</div>`).join("")}`};
+function spQ(w){const x=w.w,ev=["In your daily life, when might you talk about \""+x+"\"?","I might bring it up when I chat with friends or coworkers. "+(w.e||"")+" Using the word naturally like this helps me sound more fluent."];return (TQ[w.t]||[]).concat([ev],spQ0(w))}
+R.coll=function(){const T=topics(),cl=["#3b82f6,#8b7cf6","#22c08a,#4fd8c4","#ff9f43,#ff6b8b","#8b7cf6,#ff6b8b","#06b6d4,#3b82f6"];
+const card=(t,i,ic)=>{const n=t[1].length,ok=t[1].filter(x=>S.cards[x.w]&&S.cards[x.w].box>=3).length,du=t[1].filter(isDue).length;return`<div class="card" style="cursor:pointer" onclick="openTopic(${i})"><div class="stat" style="background:linear-gradient(135deg,${cl[i%5]});margin-bottom:10px"><b>${ic||""} ${n}</b>từ · ${esc(t[0])}</div><div class="bar"><i style="width:${ok/n*100}%"></i></div><p class="mut" style="margin:8px 0 0">${ok}/${n} đã thuộc · ${du} đến hạn ôn</p><p class="mut" style="margin:4px 0 0;font-size:14px">${esc(t[1].slice(0,3).map(x=>x.w).join(", "))}…</p></div>`};
+const P=T.map((t,i)=>[t,i]),ie=P.filter(a=>IT.includes(a[0][0])).sort((a,b)=>IT.indexOf(a[0][0])-IT.indexOf(b[0][0])),ot=P.filter(a=>!IT.includes(a[0][0]));
+$("#app").innerHTML=`<h2>Bộ sưu tập</h2><p class="mut">Bấm vào một chủ đề để xem từ và thời gian ôn lại tiếp theo. Khi thêm từ mới, bạn gõ tên chủ đề để tạo bộ riêng.</p><h3>IELTS Speaking · 18 chủ đề</h3><div class="grid">${ie.map(a=>card(a[0],a[1],IC[IT.indexOf(a[0][0])])).join("")}</div><h3 style="margin-top:22px">Chủ đề khác</h3><div class="grid">${ot.map(a=>card(a[0],a[1])).join("")}</div>`};
+const SAMPLE="word|loại từ|phiên âm|nghĩa tiếng Việt|định nghĩa|ví dụ|chủ đề\npunctual|adj|/ˈpʌŋk.tʃu.əl/|đúng giờ|arriving at the expected time|She is always punctual for meetings.|Work & Economy\nbrisk|adj||nhanh nhẹn|quick and energetic|We went for a brisk walk before breakfast.|Health & Fitness\nsouvenir|noun||quà lưu niệm|something you keep to remember a place|I bought a small souvenir at the market.|Travel & Transportation";
+function sp(l,d){const o=[];let c="",q=false;for(let i=0;i<l.length;i++){const ch=l[i];if(q){if(ch=='"'){if(l[i+1]=='"'){c+='"';i++}else q=false}else c+=ch}else if(ch=='"')q=true;else if(ch==d){o.push(c.trim());c=""}else c+=ch}o.push(c.trim());return o}
+function parseImp(t){const L=t.replace(/^\uFEFF/,"").split(/\r?\n/).map(s=>s.trim()).filter(s=>s&&s[0]!="#"),ok=[],bad=[];if(!L.length)return{ok,bad};const d=L[0].includes("\t")?"\t":L[0].includes("|")?"|":",",seen=new Set(all().map(x=>x.w.toLowerCase()));
+L.forEach((l,i)=>{const a=sp(l,d),w=a[0];if(i==0&&/^(word|từ|từ vựng|tu)$/i.test(w))return;if(!w){bad.push("Dòng "+(i+1)+": thiếu từ");return}if(w.length>60){bad.push("Dòng "+(i+1)+": từ quá dài (tối đa 60 ký tự)");return}if(seen.has(w.toLowerCase())){bad.push("Dòng "+(i+1)+": “"+w+"” đã có, bỏ qua");return}seen.add(w.toLowerCase());ok.push({w,p:a[1]||"",ipa:a[2]||"",vi:a[3]||"(chưa có nghĩa)",d:a[4]||"",e:a[5]||"",t:a[6]||""})});return{ok,bad}}
+function previewImp(){ui.prev=parseImp(ui.txt||"");R.words()}
+function readF(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{ui.txt=String(r.result);previewImp()};r.onerror=()=>{ui.msg="Không đọc được file. Hãy lưu dưới dạng .csv, .tsv hoặc .txt (UTF-8).";R.words()};r.readAsText(f,"utf-8")}
+function doImp(){const p=ui.prev;if(!p||!p.ok.length)return;const dd=+(ui.dr||0);p.ok.forEach(x=>{x.t=x.t||(ui.dt||"").trim()||"Của tôi";S.custom.push(x);S.cards[x.w]={box:0,n:0,due:dd?sod(Date.now())+dd*DAY:Date.now()}});save();ui.msg="Đã nhập "+p.ok.length+" từ. Xem lịch ôn từng từ ngay bên dưới.";ui.imp=false;ui.prev=null;ui.txt="";R.words()}
+function impPanel(){const p=ui.prev,sel="padding:10px;border-radius:10px;border:2px solid var(--line);background:var(--surf);color:var(--ink);font:16px Nunito";
+return`<div class="card" style="margin-bottom:12px"><h3>Nhập từ từ file</h3><p class="mut" style="margin:0 0 8px">Mỗi dòng là một từ. Các cột cách nhau bằng <b>|</b>, <b>Tab</b> hoặc dấu phẩy (file .csv, .tsv, .txt, mã UTF-8). Thứ tự cột:</p><div class="wrap"><code>word | loại từ | phiên âm | nghĩa tiếng Việt | định nghĩa | ví dụ | chủ đề</code></div><p class="mut">Chỉ cột đầu (word) là bắt buộc, ô nào thiếu thì để trống. Dòng tiêu đề, dòng bắt đầu bằng # và từ trùng sẽ được bỏ qua. Với Excel, hãy lưu dưới dạng CSV UTF-8.</p>
+<div class="row"><input type="file" accept=".csv,.tsv,.txt,text/plain,text/csv" onchange="readF(this)" style="flex:1;min-width:200px"><button class="btn alt" onclick="ui.txt=SAMPLE;previewImp()">Dùng dữ liệu mẫu</button></div>
+<p class="mut" style="margin:10px 0 4px">Hoặc dán nội dung vào đây:</p><textarea rows="6" oninput="ui.txt=this.value" style="font-family:monospace;font-size:14px">${esc(ui.txt||"")}</textarea>
+<div class="row" style="margin-top:10px"><input list="tl" placeholder="Chủ đề mặc định nếu dòng không ghi" value="${esc(ui.dt||"")}" oninput="ui.dt=this.value" style="flex:1;min-width:200px"><datalist id="tl">${topics().map(t=>`<option value="${esc(t[0])}">`).join("")}</datalist><select style="${sel}" onchange="ui.dr=this.value">${[[0,"hôm nay"],[1,"ngày mai"],[3,"3 ngày nữa"],[7,"7 ngày nữa"]].map(o=>`<option value="${o[0]}" ${(ui.dr||0)==o[0]?"selected":""}>Ôn lần đầu: ${o[1]}</option>`).join("")}</select><button class="btn" onclick="previewImp()">Xem trước</button></div>
+${p?`<div style="margin-top:14px"><p><b>${p.ok.length}</b> từ hợp lệ${p.bad.length?`, <b>${p.bad.length}</b> dòng bị bỏ qua`:""}</p>${p.ok.length?`<div class="wrap"><table style="width:100%;border-collapse:collapse">${p.ok.slice(0,8).map(x=>`<tr style="border-bottom:1px solid var(--line)"><td style="padding:6px"><b>${esc(x.w)}</b></td><td style="padding:6px">${esc(x.vi)}</td><td class="mut" style="padding:6px">${esc(x.t||ui.dt||"Của tôi")}</td></tr>`).join("")}</table></div>${p.ok.length>8?`<p class="mut">…và ${p.ok.length-8} từ nữa</p>`:""}<button class="btn" onclick="doImp()">Nhập ${p.ok.length} từ</button>`:""}${p.bad.length?`<p class="mut">${p.bad.slice(0,5).map(esc).join("<br>")}</p>`:""}</div>`:""}</div>`}
+function rt(r){const Q=ui.q,w=Q[ui.i||0];rate(w.w,r);if(r==0)Q.push(w);ui.i=(ui.i||0)+1;ui.b=false;R.cards()}
+function ans(btn,v){const q=ui.qs[ui.n];if(ui.done)return;ui.done=1;const ok=v.trim().toLowerCase()==q.a.toLowerCase();
+if(ok)ui.s++;
+document.querySelectorAll(".opt").forEach(b=>{if(b.textContent==q.a)b.classList.add("ok");else if(b==btn)b.classList.add("no")});
+$("#fb").innerHTML=`<p><b>${ok?"Chính xác!":"Đáp án đúng: "+esc(q.a)}</b></p><button class="btn" onclick="ui.n++;ui.done=0;R.quiz()">Câu tiếp</button>`;
+if(!ok){const c=S.cards[q.x.w];if(c){c.box=Math.max(0,c.box-1);save()}}}
+function addW(){const w=nw.value.trim();if(!w)return;S.custom.push({w,vi:nv.value||"(chưa có nghĩa)",d:nd.value||"",e:ne.value||"",p:"",ipa:"",t:nt.value.trim()||"Của tôi"});const dd=+nr.value;S.cards[w]={box:0,n:0,due:dd?sod(Date.now())+dd*DAY:Date.now()};save();ui.add=false;R.words()}
+document.addEventListener("keydown",e=>{if(tab=="cards"&&e.code=="Space"&&e.target.tagName!="INPUT"){e.preventDefault();ui.b=!ui.b;R.cards()}});
+go("home");
+</script>
+</body>
+</html>
